@@ -1,10 +1,14 @@
 import "./styles.css";
+import Login from './Login';
+import Private from './Private';
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
 
 export default function App() {
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
+      { isAuthenticated() ? <Private /> : <Login /> }
     </div>
   );
 }
